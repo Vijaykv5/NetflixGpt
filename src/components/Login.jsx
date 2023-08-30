@@ -1,12 +1,13 @@
 import React, { useRef, useState } from 'react'
 import Header from './Header'
 import { checkValidData } from '../utils/validate';
-import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
-
+import { auth } from "../utils/firebase"
+import {createUserWithEmailAndPassword,signInWithEmailAndPassword} from "firebase/auth"
 const Login = () => {
   const [isSignInForm,setIsSignInForm]=useState(true);
   const [errorMessage,setErrorMessage]=useState(null);
-
+  
+  const name=useRef(null);
   const email=useRef(null);
   const password=useRef(null);
   
@@ -15,10 +16,9 @@ const Login = () => {
   const handleButtonClick=()=>{
     const message=checkValidData(email.current.value, password.current.value);
     setErrorMessage(message);
-    console.log(message);
     if(message) return;
 //Sign Up Form
-const auth = getAuth();
+    if(!isSignInForm){
 createUserWithEmailAndPassword(auth, email.current.value, password.current.value)
   .then((userCredential) => {
     // Signed in 
@@ -30,11 +30,23 @@ createUserWithEmailAndPassword(auth, email.current.value, password.current.value
   .catch((error) => {
     const errorCode = error.code;
     const errorMessage = error.message;
-    setErrorMessage(errorMessage)
+    setErrorMessage("User Already Exists. Try Signing In");
     // ..
-  });
-   
-    
+  }); 
+}
+else{
+signInWithEmailAndPassword(auth, email.current.value, password.current.value)
+.then((userCredential)=>{
+  const user=userCredential.user;
+  console.log(user);
+}
+)
+.catch((error)=>{
+  const errorCode = error.code;
+    const errorMessage = error.message;
+    setErrorMessage("User Not Found");
+})
+}
   }
   const toggeSignInForm=()=>{
     setIsSignInForm(!isSignInForm);
