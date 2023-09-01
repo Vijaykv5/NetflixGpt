@@ -1,11 +1,15 @@
-import React, { useRef, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import Header from './Header'
 import { checkValidData } from '../utils/validate';
 import { auth } from "../utils/firebase"
-import {createUserWithEmailAndPassword,signInWithEmailAndPassword} from "firebase/auth"
+import {createUserWithEmailAndPassword,onAuthStateChanged,signInWithEmailAndPassword,updateProfile} from "firebase/auth"
+import { useDispatch } from 'react-redux';
+import { addUser, removeUser } from '../utils/userSlice';
 import { useNavigate } from 'react-router-dom';
+
 const Login = () => {
-  const navigate=useNavigate;
+  const dispatch =useDispatch();
+  const navigate= useNavigate()
   const [isSignInForm,setIsSignInForm]=useState(true);
   const [errorMessage,setErrorMessage]=useState(null);
   
@@ -13,8 +17,6 @@ const Login = () => {
   const email=useRef(null);
   const password=useRef(null);
   
-
-
   const handleButtonClick=()=>{
     const message=checkValidData(email.current.value, password.current.value);
     setErrorMessage(message);
@@ -23,16 +25,29 @@ const Login = () => {
     if(!isSignInForm){
 createUserWithEmailAndPassword(auth, email.current.value, password.current.value)
   .then((userCredential) => {
-    // Signed in 
-    navigate("/browse");
-    const user = userCredential.user;
-    console.log(user);
+    const user=userCredential.user;
+    // const photoURL = user.photoURL;
+    // console.log(photoURL);
+
+    updateProfile(auth.currentUser, {
+      displayName: name.current.value,
+     
+     
+    }).then(() => {
+      navigate("/browse")
+    }).catch((error) => {
+      // An error occurred
+      // ...
+      setErrorMessage(error.message);
+    });
+   
+  
     // ...
   })
   .catch((error) => {
     const errorCode = error.code;
     const errorMessage = error.message;
-    setErrorMessage("User Already Exists. Try Signing In");
+    setErrorMessage(errorMessage);
     // ..
   }); 
 }
@@ -48,7 +63,7 @@ signInWithEmailAndPassword(auth, email.current.value, password.current.value)
   const errorCode = error.code;
     const errorMessage = error.message;
     setErrorMessage("User Not Found");
-    navigate("/browse");
+    
     
 })
 }
@@ -56,6 +71,27 @@ signInWithEmailAndPassword(auth, email.current.value, password.current.value)
   const toggeSignInForm=()=>{
     setIsSignInForm(!isSignInForm);
   }
+
+  useEffect(()=>{
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        console.log("1",user);
+        const {uid,email,displayName} = user;
+        dispatch(addUser({uid:uid,email:email,displayName:displayName}));
+        navigate("/browse");
+
+        
+      } else {
+        dispatch(removeUser());
+        navigate("/");
+
+      }
+    });
+    
+
+  },[])
+
+
   return (
     <div>
       <Header/>
@@ -71,7 +107,7 @@ signInWithEmailAndPassword(auth, email.current.value, password.current.value)
         </>
         :
         <>
-        <input type="text" placeholder='Full Name' className='p-3 px-5 my-4  w-full rounded-md bg-[#333333] text-gray-400'/>
+        <input type="text" ref={name} placeholder='Full Name' className='p-3 px-5 my-4  w-full rounded-md bg-[#333333] text-gray-400'/>
         <input type="text" ref={email} placeholder='Email' className='p-3 px-5 my-3 w-full rounded-md bg-[#333333] text-gray-400'/>
         <input type="password"  ref={password}placeholder='Password' className='p-3 px-5 my-4  w-full rounded-md bg-[#333333] text-gray-400'/>
         </>
