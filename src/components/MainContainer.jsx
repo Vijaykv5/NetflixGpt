@@ -5,12 +5,21 @@ import VideoBackground from './VideoBackground'
 
 const MainContainer = () => {
     const movies=useSelector(store=>store.movies?.nowPlayingMovies);
+    function randomNumber(min, max) {
+      min = Math.ceil(min);
+      max = Math.floor(max);
+      return Math.floor(Math.random() * (max - min + 1)) + min;
+  }
     //early return
     if(movies===null) return;
-    const mainmovie=movies[2];
+    const mainmovie=movies[randomNumber(0, 19)];
     
     console.log(mainmovie);
     const {original_title,overview,id}=mainmovie;
+    // console.log(original_title);
+    // console.log(overview);
+    // console.log(id);
+
   return (
     <div>
         <VideoTitle title={original_title} overview={overview}/>
