@@ -13,7 +13,7 @@ const MovieCard = ({ poster }) => {
   };
 
   const imageStyle = {
-    transform: isHovered ? 'scale(1.2)' : 'scale(1)', // Enlarge on hover
+    transform: isHovered ? 'scale(1.1)' : 'scale(1)', // Enlarge on hover
     transition: 'transform 0.3s ease-in-out', // Smooth transition effect
   };
 
@@ -27,7 +27,7 @@ const MovieCard = ({ poster }) => {
         src={IMG_CDN + poster}
         alt='Movie Poster'
         style={imageStyle}
-        className='poster-image'
+        className='poster-image rounded-lg'
       />
     </div>
   );

@@ -7,6 +7,7 @@ import Footer from './Footer';
 import usePopularMovies from '../hooks/usePopularMovies';
 import useUpComingMovies from '../hooks/useUpComingMovies';
 import useTopRated from '../hooks/useTopRated';
+import GptSearch from './GptSearch';
 
 
 
@@ -18,6 +19,7 @@ const Browse = () => {
   return (
     <div>
       <Header/>
+      <GptSearch/>
       <MainContainer/>
       <SecondaryContainer/>
       <Footer/>

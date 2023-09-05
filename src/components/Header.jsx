@@ -1,13 +1,20 @@
 import React, { useState } from 'react';
 import { auth } from '../utils/firebase';
 import {signOut} from 'firebase/auth'
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { logo, userpic } from '../utils/constants';
+import { toggleGptSearchView } from '../utils/gptSlice';
+import { addUser } from '../utils/userSlice';
 
 const Header = () => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const dispatch=useDispatch();
   const navigate =useNavigate();
+  const gptSearch=()=>{
+    dispatch(toggleGptSearchView());
+  };
+  
   const toggleDropdown = () => {
     setIsDropdownOpen(!isDropdownOpen);
 
@@ -20,23 +27,26 @@ const Header = () => {
   const handleSignout=()=>{
     signOut(auth).then(() => {
     navigate("/")
+    dispatch(addUser(userName))
     
     }).catch((error) => {
       // An error happened.
     });
-    
+   
   }
 
   return (
     <>
-      <div className='absolute px-6 py-2 bg-gradient-to-b from-black z-20 w-full flex justify-between'>
+      <div className=' px-6 py-2 bg-gradient-to-b from-black z-20 w-full flex justify-between absolute  '>
         <img
-          className="w-56"
+          className="w-44"
           src={logo}
           alt='logo'
         />
-        {user &&
+        {user?
         <div className='flex p-3'>
+          <button onClick={gptSearch}className='text-white mx-9 bg-red-600 rounded-md mr-4  px-7'>GPT Search</button>
+
           <img
             id="dropdownDefaultButton"
             className='w-12 h-12 cursor-pointer'
@@ -53,7 +63,7 @@ const Header = () => {
             </div>
           )}
         </div>
-        }
+      :<div></div>}
       </div>
     </>
   );
