@@ -12,13 +12,13 @@ const MainContainer = () => {
   }
     //early return
     if(movies===null) return;
-    const mainmovie=movies[randomNumber(0, 19)];
+    const mainmovie=movies[randomNumber(0,19)];
     
-    console.log(mainmovie);
+    console.log(movies);
     const {original_title,overview,id}=mainmovie;
     // console.log(original_title);
-    // console.log(overview);
-    // console.log(id);
+    console.log(overview);
+    console.log(id);
 
   return (
     <div className='pt-[30%] bg-black md:pt-0'>

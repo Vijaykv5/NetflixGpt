@@ -5,7 +5,7 @@ import gptReducer from './gptSlice';
 import storage from 'redux-persist/lib/storage';
 import { persistReducer } from 'redux-persist';
 import { combineReducers } from '@reduxjs/toolkit';
-
+import { getDefaultMiddleware } from '@reduxjs/toolkit';
 //Redux Persistant 
 
 const persistConfig={
@@ -17,6 +17,7 @@ const reducer =combineReducers({
     user:userReducer,
     movies:moviesReducer,
     gpt:gptReducer,
+    
 })
 
 const persistedReducer=persistReducer(persistConfig,reducer);

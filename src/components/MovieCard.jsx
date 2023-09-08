@@ -15,8 +15,8 @@ const MovieCard = ({ poster ,key }) => {
     setIsHovered(false);
   };
   const videotrailer =(e)=>{
-    console.log("Movie idss"+movieid)
-    window.location.href="https://www.youtube.com/watch?v=SUXWAEX2jlg"//I need the video id 
+    console.log("Movie idss"+e)
+    // window.location.href="https://www.youtube.com/watch?v=SUXWAEX2jlg"
  }
 
   const imageStyle = {
@@ -25,7 +25,7 @@ const MovieCard = ({ poster ,key }) => {
   };
 
   return (
-    <div onClick={videotrailer} className=' w-40 pr-5 md:w-60 md:pr-6 movie-card'onMouseEnter={handleMouseEnter}  onMouseLeave={handleMouseLeave}>
+    <div onClick={videotrailer(key)} className=' w-40 pr-5 md:w-60 md:pr-6 movie-card'onMouseEnter={handleMouseEnter}  onMouseLeave={handleMouseLeave}>
       <img
         src={IMG_CDN + poster}
         alt='Movie Poster'
