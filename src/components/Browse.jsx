@@ -20,8 +20,8 @@ const Browse = () => {
     <div>
       <Header/>
       <GptSearch/>
-      <MainContainer/>
-      <SecondaryContainer/>
+      {/* <MainContainer/>
+      <SecondaryContainer/> */}
       <Footer/>
     </div>
   )

@@ -6,6 +6,7 @@ import {createUserWithEmailAndPassword,onAuthStateChanged,signInWithEmailAndPass
 import { useDispatch } from 'react-redux';
 import { addUser, removeUser } from '../utils/userSlice';
 import { useNavigate } from 'react-router-dom';
+import { BG_IMG } from '../utils/constants';
 
 const Login = () => {
   const dispatch =useDispatch();
@@ -28,12 +29,14 @@ createUserWithEmailAndPassword(auth, email.current.value, password.current.value
     const user=userCredential.user;
     // const photoURL = user.photoURL;
     // console.log(photoURL);
-
+    
     updateProfile(auth.currentUser, {
       displayName: name.current.value,
+      
      
      
     }).then(() => {
+      dispatch(addUser(displayName))
       navigate("/browse")
     }).catch((error) => {
       // An error occurred
@@ -96,7 +99,7 @@ signInWithEmailAndPassword(auth, email.current.value, password.current.value)
     <div>
       <Header/>
       <div>
-      <img className="absolute bg-slate-500 "  src="https://assets.nflxext.com/ffe/siteui/vlv3/00103100-5b45-4d4f-af32-342649f1bda5/64774cd8-5c3a-4823-a0bb-1610d6971bd4/IN-en-20230821-popsignuptwoweeks-perspective_alpha_website_medium.jpg" alt='background'/>
+      <img className="absolute bg-slate-500 "  src={BG_IMG} alt='background'/>
       </div>
       <form onSubmit={(e)=>e.preventDefault()}className='absolute bg-black py-20 px-5 m-36 w-[440px] mx-auto  right-0 left-0 text-white text-center rounded-md bg-opacity-80'>
         <h1 className='font-medium text-3xl'>{isSignInForm ? "Sign In" : "Sign Up"}</h1>

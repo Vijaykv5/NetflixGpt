@@ -4,7 +4,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const gptSlice=createSlice({
     name:"Gpt",
     initialState:{
-        showGptSearch:false
+        showGptSearch:true
     },
     reducers:{
         toggleGptSearchView:(state)=>{

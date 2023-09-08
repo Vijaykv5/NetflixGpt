@@ -3,7 +3,8 @@ import { auth } from '../utils/firebase';
 import {signOut} from 'firebase/auth'
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { logo, userpic } from '../utils/constants';
+import { userpic } from '../utils/constants';
+import logo from '../../assets/images/logo.png'
 import { toggleGptSearchView } from '../utils/gptSlice';
 import { addUser } from '../utils/userSlice';
 
@@ -39,11 +40,11 @@ const Header = () => {
     <>
       <div className=' px-6 py-2 bg-gradient-to-b from-black z-20 w-full flex justify-between absolute  '>
         <img
-          className="w-44"
+          className="w-48 pt-4 h-16"
           src={logo}
           alt='logo'
         />
-        {user?
+        ?
         <div className='flex p-3'>
           <button onClick={gptSearch}className='text-white mx-9 bg-red-600 rounded-md mr-4  px-7'>GPT Search</button>
 
@@ -63,7 +64,7 @@ const Header = () => {
             </div>
           )}
         </div>
-      :<div></div>}
+      :<div></div>
       </div>
     </>
   );
