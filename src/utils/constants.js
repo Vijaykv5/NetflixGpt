@@ -6,7 +6,7 @@ export const API_Options ={
     method:"GET",
     headers:{
         accept:"application/json",
-        Authorization:'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJjMWU3MDY3OWRjZGQyY2Y4YmQxNDc2YzdiOTg5ZTJiNCIsInN1YiI6IjY0ZjMwNDAxZTBjYTdmMDEyZWIzNzJjNiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.Vev0zz6nGwcu_gWREBtq8rqE5NVgiPyIygAIrG7pgXk'
+        Authorization:'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJjMWU3MDY3OWRjZGQyY2Y4YmQxNDc2YzdiOTg5ZTJiNCIsInN1YiI6IjY0ZjMwNDAxZTBjYTdmMDEyZWIzNzJjNiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.Vev0zz6nGwcu_gWREBtq8rqE5NVgiPyIygAIrG7pgXk',
     }
 }
 
@@ -15,4 +15,4 @@ export const IMG_CDN = "https://image.tmdb.org/t/p/w500/"
 
 export const BG_IMG ="https://assets.nflxext.com/ffe/siteui/vlv3/00103100-5b45-4d4f-af32-342649f1bda5/64774cd8-5c3a-4823-a0bb-1610d6971bd4/IN-en-20230821-popsignuptwoweeks-perspective_alpha_website_medium.jpg"
 
-export const OPENAI_API_KEY ="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"
+export const OPENAI_API_KEY ="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";

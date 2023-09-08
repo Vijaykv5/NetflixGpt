@@ -99,9 +99,9 @@ signInWithEmailAndPassword(auth, email.current.value, password.current.value)
     <div>
       <Header/>
       <div>
-      <img className="absolute bg-slate-500 "  src={BG_IMG} alt='background'/>
+      <img className="absolute bg-slate-500 h-screen object-cover w-full "  src={BG_IMG} alt='background'/>
       </div>
-      <form onSubmit={(e)=>e.preventDefault()}className='absolute bg-black py-20 px-5 m-36 w-[440px] mx-auto  right-0 left-0 text-white text-center rounded-md bg-opacity-80'>
+      <form onSubmit={(e)=>e.preventDefault()}className='absolute bg-black md:py-20 py-16 px-5 m-36 w-[440px] mx-auto  right-0 left-0 text-white text-center rounded-md bg-opacity-80'>
         <h1 className='font-medium text-3xl'>{isSignInForm ? "Sign In" : "Sign Up"}</h1>
         {isSignInForm ?
         <>

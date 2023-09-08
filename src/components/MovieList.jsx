@@ -4,7 +4,7 @@ import MovieCard from './mOVIEcARD.JSX';
 const MovieList = ({ title, movies }) => {
   return (
     <div className='p-6 text-white '>
-        <h1 className='text-3xl font-semibold p-5 '>{title}</h1>
+        <h1 className='md:text-3xl font-semibold p-5 text-2xl '>{title}</h1>
       <div className='flex p-5 flex-row overflow-x-scroll no-scrollbar '>
         
         <div className=' flex flex-row '>

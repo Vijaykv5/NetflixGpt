@@ -1,7 +1,10 @@
 import React, { useState } from 'react';
 import { IMG_CDN } from '../utils/constants';
 
-const MovieCard = ({ poster }) => {
+const MovieCard = ({ poster ,key }) => {
+  console.log("Movie idss"+key)
+
+  if(!poster) return null;
   const [isHovered, setIsHovered] = useState(false);
 
   const handleMouseEnter = () => {
@@ -11,6 +14,10 @@ const MovieCard = ({ poster }) => {
   const handleMouseLeave = () => {
     setIsHovered(false);
   };
+  const videotrailer =(e)=>{
+    console.log("Movie idss"+movieid)
+    window.location.href="https://www.youtube.com/watch?v=SUXWAEX2jlg"//I need the video id 
+ }
 
   const imageStyle = {
     transform: isHovered ? 'scale(1.1)' : 'scale(1)', // Enlarge on hover
@@ -18,11 +25,7 @@ const MovieCard = ({ poster }) => {
   };
 
   return (
-    <div
-      className='w-60 pr-6 movie-card'
-      onMouseEnter={handleMouseEnter}
-      onMouseLeave={handleMouseLeave}
-    >
+    <div onClick={videotrailer} className=' w-40 pr-5 md:w-60 md:pr-6 movie-card'onMouseEnter={handleMouseEnter}  onMouseLeave={handleMouseLeave}>
       <img
         src={IMG_CDN + poster}
         alt='Movie Poster'
