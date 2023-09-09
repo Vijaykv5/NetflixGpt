@@ -14,7 +14,7 @@ const Gptsearchbar = () => {
     const searchmovietmdb =async(movie)=>{
         const data =await fetch("https://api.themoviedb.org/3/search/movie?query="+movie+"&include_adult=false&language=en-US&page=1",API_Options)
         const json = await data.json();
-        return json.results;
+        return json?.results;
 
     }
     const handlegptsearchclick= async () =>{
@@ -40,8 +40,8 @@ const Gptsearchbar = () => {
   return (
     <div className='pt-[15%]  justify-center flex  '>
         <form className='w-[90%] bg-black md:w-1/2 grid grid-cols-12 md:p-0 ' onSubmit={(e)=>e.preventDefault()}>
-            <input ref={searchtext} type="text" className='p-2 m-3 col-span-6 md:p-4 md:m-4 md:col-span-8 md:w-[95%] w-80 ' placeholder='What would you like to watch today?'/>
-            <button onClick={handlegptsearchclick} className='ml-32 md:px-4 md:py-2 px-3 md:w-[85%] w-20  m-4  md:m-4 bg-red-600 text-white rounded-md  md:col-span-4 col'> Search</button>
+            <input ref={searchtext} type="text" className='p-2 m-3 col-span-6 md:p-4 md:m-4 md:col-span-8 md:w-[95%] w-60 ' placeholder='What would you like to watch today?'/>
+            <button onClick={handlegptsearchclick} className='ml-20  md:px-4 md:py-2 px-3 md:w-[85%] w-20  m-3 md:m-4 bg-red-600 text-white rounded-md  md:col-span-4 col'> Search</button>
         </form>
     </div>
   )

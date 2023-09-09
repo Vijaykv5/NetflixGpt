@@ -4,7 +4,7 @@ import VideoTitle from './VideoTitle'
 import VideoBackground from './VideoBackground'
 
 const MainContainer = () => {
-    const movies=useSelector(store=>store.movies?.nowPlayingMovies);
+    const movies=useSelector(store=>store.movies.nowPlayingMovies);
     function randomNumber(min, max) {
       min = Math.ceil(min);
       max = Math.floor(max);
