@@ -53,6 +53,7 @@ const Header = () => {
               src={userpic}
               onClick={toggleDropdown}
             />
+            
             {isDropdownOpen && (
               <div className="absolute bg-[#333333] text-slate-400 mt-14 w-60 right-2 p-2 rounded-lg shadow-lg">
                 <ul>

@@ -1,8 +1,9 @@
 
-<article align="center" >
-<img width="482" alt="Screenshot_2023-09-06_at_9 13 03_PM-removebg-preview" src="https://github.com/Vijaykv5/NetflixGpt/assets/94985341/384abd6a-54ca-48d9-a4dd-e6566c6fb59c">
+<div style="text-align: center;">
+  <img width="482" alt="Screenshot" src="https://github.com/Vijaykv5/NetflixGpt/assets/94985341/384abd6a-54ca-48d9-a4dd-e6566c6fb59c">
+</div>
 
-</article><hr>
+<hr>
 
 **Welcome to NetflixGPT 👋**
 

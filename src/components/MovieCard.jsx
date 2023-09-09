@@ -1,11 +1,27 @@
-import React, { useState } from 'react';
-import { IMG_CDN } from '../utils/constants';
+import React, { useEffect, useState } from 'react';
+import { API_Options, IMG_CDN } from '../utils/constants';
 
-const MovieCard = ({ poster ,key }) => {
-  console.log("Movie idss"+key)
+const MovieCard = ({ poster ,id }) => {
+  console.log("Movie idssss"+id)
+  console.log("pp path"+poster)
+
 
   if(!poster) return null;
   const [isHovered, setIsHovered] = useState(false);
+  //to get youtube key
+//   const [trailerid,setTrailerId]=useState(null);
+//   const getMovieVideos= async()=>{
+//     const data= await fetch("https://api.themoviedb.org/3/movie/"+id+"/videos?language=en-US",API_Options);
+//     const json=await data.json();
+//     const filterData=json?.results.filter(video=>video.type==="Trailer")
+//     const trailer=filterData[0];
+//     setTrailerId(trailer?.key)
+    
+// }
+// console.log("id :",trailerid);
+// useEffect(()=>{
+//     getMovieVideos();
+// },[])
 
   const handleMouseEnter = () => {
     setIsHovered(true);
@@ -16,7 +32,9 @@ const MovieCard = ({ poster ,key }) => {
   };
   const videotrailer =(e)=>{
     console.log("Movie idss"+e)
-    // window.location.href="https://www.youtube.com/watch?v=SUXWAEX2jlg"
+    if(!e) return null;
+ 
+    // window.location.href="https://www.youtube.com/watch?v="+trailerid;
  }
 
   const imageStyle = {
@@ -25,7 +43,7 @@ const MovieCard = ({ poster ,key }) => {
   };
 
   return (
-    <div onClick={videotrailer(key)} className=' w-40 pr-5 md:w-60 md:pr-6 movie-card'onMouseEnter={handleMouseEnter}  onMouseLeave={handleMouseLeave}>
+    <div onClick={videotrailer(id)} className=' w-40 pr-5 md:w-60 md:pr-6 movie-card'onMouseEnter={handleMouseEnter}  onMouseLeave={handleMouseLeave}>
       <img
         src={IMG_CDN + poster}
         alt='Movie Poster'

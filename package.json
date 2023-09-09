@@ -10,6 +10,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@popperjs/core": "2.9.1",
     "@reduxjs/toolkit": "^1.9.5",
     "firebase": "^10.3.0",
     "openai": "^4.5.0",
