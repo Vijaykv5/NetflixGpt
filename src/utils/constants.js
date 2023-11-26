@@ -17,3 +17,4 @@ export const BG_IMG ="https://assets.nflxext.com/ffe/siteui/vlv3/00103100-5b45-4
 
 export const OPENAI_API_KEY =import.meta.env.VITE_OPENAI_API_KEY;
 
+
